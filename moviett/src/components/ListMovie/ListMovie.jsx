@@ -6,6 +6,9 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { ShowTheme } from '../Header/Header';
 import 'animate.css';
+import { Outlet, Link } from 'react-router-dom';
+
+
 const cx = classNames.bind(styles);
 
 function ListMovie() {
@@ -29,13 +32,17 @@ function ListMovie() {
     return (
         <div>
             <div className={cx('Movie')} style={isShow ? { backgroundColor: '#fff' } : { backgroundColor: '#1a1a1a' }}>
-                <h1 className={cx('headMovie','animate__animated animate__fadeInUp')}>PHIM ĐỀ CỬ</h1>
+                <h1 className={cx('headMovie', 'animate__animated animate__fadeInUp')}>PHIM ĐỀ CỬ</h1>
 
                 <div className={cx('listMovie')}>
                     {movieData.length > 0 &&
                         movieData.map((movies, key) => {
                             return (
-                                <div className={cx('MovieForm', 'animate__animated animate__slideInUp')} key={key}>
+                                <Link
+                                    to="/movie"
+                                    className={cx('MovieForm', 'animate__animated animate__slideInUp')}
+                                    key={key}
+                                >
                                     <div className={cx('Movie_img')}>
                                         <img
                                             src={`https://img.ophim12.cc/uploads/movies/${movies.slug}-poster.jpg`}
@@ -44,11 +51,12 @@ function ListMovie() {
                                         <IoIosPlayCircle className={cx('btn_play')} />
                                     </div>
                                     <div className={cx('Movie_name')}>{movies.name}</div>
-                                </div>
+                                </Link>
                             );
                         })}
                 </div>
             </div>
+            <Outlet />
         </div>
     );
 }

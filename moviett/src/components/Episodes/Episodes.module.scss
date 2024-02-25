@@ -1,0 +1,25 @@
+.form {
+    background-color: #282828;
+    width: 980px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+.titile {
+    font-size: 14px;
+    color: #dcdcdc;
+}
+.episodes {
+    margin-left: 15px;
+    color: #fff;
+    font-size: 13px;
+    background-color: #464545;
+    max-width: 47px;
+    max-height: 30px;
+    border-radius: 3px;
+    padding: 5px;
+    &:hover {
+        background-color: #ff9601;
+    }
+}

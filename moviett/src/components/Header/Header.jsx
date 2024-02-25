@@ -4,7 +4,8 @@ import { CiSearch } from 'react-icons/ci';
 import { IoMdSunny } from 'react-icons/io';
 import { IoMoonSharp } from 'react-icons/io5';
 import { useState, createContext } from 'react';
-import ListMovie from '../ListMovie/ListMovie';
+import { Outlet, Link } from 'react-router-dom';
+
 
 const cx = classNames.bind(style);
 export const ShowTheme = createContext();
@@ -14,6 +15,9 @@ function Header() {
     return (
         <ShowTheme.Provider value={isShow}>
             <div className={cx('header')}>
+                <Link to="/" className={cx('logo')}>
+                    TTPhim
+                </Link>
                 <div className={cx('search')}>
                     <input type="text" name="" id="" className={cx('search_input')} placeholder="Search"></input>
                     <CiSearch className={cx('search_icon')} />
@@ -33,7 +37,7 @@ function Header() {
                     className={cx('sun_icon')}
                 />
             </div>
-            <ListMovie />
+            <Outlet />
         </ShowTheme.Provider>
     );
 }
