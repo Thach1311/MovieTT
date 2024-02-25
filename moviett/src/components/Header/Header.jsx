@@ -5,7 +5,7 @@ import { IoMdSunny } from 'react-icons/io';
 import { IoMoonSharp } from 'react-icons/io5';
 import { useState, createContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-
+import { FaFilm } from 'react-icons/fa';
 
 const cx = classNames.bind(style);
 export const ShowTheme = createContext();
@@ -16,6 +16,7 @@ function Header() {
         <ShowTheme.Provider value={isShow}>
             <div className={cx('header')}>
                 <Link to="/" className={cx('logo')}>
+                    <FaFilm className={cx('mr-[6px]')}/>
                     TTPhim
                 </Link>
                 <div className={cx('search')}>

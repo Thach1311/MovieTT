@@ -3,35 +3,36 @@ import styles from './ListMovie.module.scss';
 import { IoIosPlayCircle } from 'react-icons/io';
 import axios from 'axios';
 import { useState } from 'react';
-import { useContext } from 'react';
-import { ShowTheme } from '../Header/Header';
+import { useEffect } from 'react';
 import 'animate.css';
 import { Outlet, Link } from 'react-router-dom';
-
+import { useMovieContext } from '../Middle/MovieProvider';
 
 const cx = classNames.bind(styles);
 
 function ListMovie() {
     const [movieData, setMovieData] = useState([]);
-    const isShow = useContext(ShowTheme);
+    const { setSelectedMovieSlug } = useMovieContext();
 
-    const fetchData = () => {
-        return axios
-            .get('https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1')
-            .then((response) => {
-                const data = response.data.items;
-                setMovieData(data);
-            })
-            .catch((error) => {
-                // Xử lý lỗi ở đây
-                console.error('Axios Error:', error);
-            });
-    };
-    fetchData();
+    useEffect(() => {
+        const fetchData = () => {
+            return axios
+                .get('https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1')
+                .then((response) => {
+                    const data = response.data.items;
+                    setMovieData(data);
+                })
+                .catch((error) => {
+                    console.error('Axios Error:', error);
+                });
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div>
-            <div className={cx('Movie')} style={isShow ? { backgroundColor: '#fff' } : { backgroundColor: '#1a1a1a' }}>
+            <div className={cx('Movie')}>
                 <h1 className={cx('headMovie', 'animate__animated animate__fadeInUp')}>PHIM ĐỀ CỬ</h1>
 
                 <div className={cx('listMovie')}>
@@ -42,6 +43,7 @@ function ListMovie() {
                                     to="/movie"
                                     className={cx('MovieForm', 'animate__animated animate__slideInUp')}
                                     key={key}
+                                    onClick={() => setSelectedMovieSlug(movies.slug)}
                                 >
                                     <div className={cx('Movie_img')}>
                                         <img

@@ -2,28 +2,54 @@ import classNames from 'classnames/bind';
 import styles from './DescriptionFilm.module.scss';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import { useMovieContext } from '../Middle/MovieProvider';
+import axios from 'axios';
 const cx = classNames.bind(styles);
 function DescriptionFilm() {
+    const { selectedMovieSlug } = useMovieContext();
+    const [movieData, setMovieData] = useState([]);
+    // console.log(selectedMovieSlug);
+
     useEffect(() => {
         Aos.init({ transition: 2000 });
     }, []);
 
+    useEffect(() => {
+        const fetchAPI = () => {
+            return axios
+                .get(`https://ophim1.com/phim/${selectedMovieSlug}`)
+                .then((response) => {
+                    const data = response.data.movie;
+                    setMovieData(data);
+                })
+                .catch((error) => {
+                    console.error('Axios Error:', error);
+                });
+        };
+        fetchAPI();
+    }, [selectedMovieSlug]);
+
+    // console.log(movieData);
+
     return (
         <>
-            <div data-aos='fade-down' className={cx('form_Description')}>
+            <div data-aos="fade-down" className={cx('form_Description')}>
                 <div className={cx('layout')}>
                     <div data-aos="fade-up" className={cx('description')}>
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Đang phát: </span>
-                            <span className={cx('text-red-600 font-[500] text-[13px]')}> Hoàn Tất(8/8)</span>
+                            <span className={cx('text-red-600 font-[500] text-[13px]')}>
+                                {movieData.episode_total} tập
+                            </span>
                         </div>
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Thể loại: </span>
                             <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>
-                                {' '}
-                                Phim Viễn Tưởng, Phim Phiêu Lưu
+                                {movieData.category &&
+                                    movieData.category.map((cate) => {
+                                        return <span id={cate.id}>{cate.name}, </span>;
+                                    })}
                             </span>
                         </div>
                         <div>
@@ -37,22 +63,32 @@ function DescriptionFilm() {
                     <div data-aos="fade-up" className={cx('description')}>
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Năm Phát Hành: </span>
-                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>2024</span>
+                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>
+                                {movieData.year}
+                            </span>
                         </div>
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Đạo diễn: </span>
-                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}> Albert Kim,</span>
+                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>
+                                {movieData.director}
+                            </span>
                         </div>
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Thời lượng: </span>
-                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>8 Tập</span>
+                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>
+                                {movieData.time}
+                            </span>
                         </div>
                     </div>
 
                     <div data-aos="fade-up" className={cx('description')}>
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Quốc gia: </span>
-                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>Phim Âu Mỹ</span>
+
+                            <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>
+                                {movieData.country &&
+                                    movieData.country.map((country) => <span key={country.id}>{country.name}</span>)}
+                            </span>
                         </div>
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Điểm IMDb: </span>
@@ -67,7 +103,7 @@ function DescriptionFilm() {
                         <div>
                             <span className={cx('text-white font-[500] text-[13px]')}>Diễn viên: </span>
                             <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>
-                                Gordon Cormier, Dallas Liu,
+                                {movieData.actor}
                             </span>
                         </div>
                     </div>
@@ -75,16 +111,14 @@ function DescriptionFilm() {
                 <div className={cx('h-[1px] w-[950px] bg-[#3a3a3a] mt-[10px]')}></div>
 
                 <div className={cx('main')}>
-                    <h3 data-aos={'fade-left'} className={cx('text-[15px] font-[700] text-[#ff9601] mt-[10px] mb-[10px]')}>Nội dung phim</h3>
+                    <h3
+                        data-aos={'fade-left'}
+                        className={cx('text-[15px] font-[700] text-[#ff9601] mt-[10px] mb-[10px]')}
+                    >
+                        Nội dung phim
+                    </h3>
                     <div data-aos="fade-down" className={cx('text-[14px] text-[#828282]')}>
-                        Thế Thần: Ngự Khí Sư Cuối Cùng (Live Action) Avatar: The Last Airbender 2024 là một series
-                        truyền hình live-action được sản xuất bởi Netflix, dựa trên series hoạt hình cùng tên nổi tiếng
-                        của Nickelodeon. Phim kể về Aang, một cậu bé 12 tuổi là airbender, thức dậy sau khi bị đóng băng
-                        trong băng 100 năm. Aang là Avatar duy nhất còn sót lại sau khi tất cả các airbender khác bị
-                        Fire Nation tiêu diệt. Phim xoay quanh hành trình của Aang cùng bạn bè trong việc học cách kiểm
-                        soát bốn yếu tố (Nước, Đất, Lửa, và Khí) để phục hồi cân bằng cho thế giới bị đe dọa bởi Fire
-                        Nation. Bộ phim có sự tham gia của các diễn viên như Gordon Cormier, Daniel Dae Kim và Tamlyn
-                        Tomita
+                        {movieData.content}
                     </div>
                 </div>
             </div>
