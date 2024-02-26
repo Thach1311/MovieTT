@@ -3,13 +3,21 @@ import styles from './DescriptionFilm.module.scss';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
-import { useMovieContext } from '../Middle/MovieProvider';
+// import { useMovieContext } from '../Middle/MovieProvider';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 const cx = classNames.bind(styles);
 function DescriptionFilm() {
-    const { selectedMovieSlug } = useMovieContext();
+    // const { selectedMovieSlug } = useMovieContext();
     const [movieData, setMovieData] = useState([]);
     // console.log(selectedMovieSlug);
+
+    const location = useLocation();
+    const currentPath = location.pathname;
+    const pathWithoutLeadingSlash = currentPath.startsWith('/movie/') ? currentPath.substring(1) : currentPath;
+    const segments = pathWithoutLeadingSlash.split('/movie');
+    const lastSegment = segments[segments.length - 1];
+    // console.log(lastSegment);
 
     useEffect(() => {
         Aos.init({ transition: 2000 });
@@ -18,7 +26,7 @@ function DescriptionFilm() {
     useEffect(() => {
         const fetchAPI = () => {
             return axios
-                .get(`https://ophim1.com/phim/${selectedMovieSlug}`)
+                .get(`https://ophim1.com/phim${lastSegment}`)
                 .then((response) => {
                     const data = response.data.movie;
                     setMovieData(data);
@@ -28,7 +36,7 @@ function DescriptionFilm() {
                 });
         };
         fetchAPI();
-    }, [selectedMovieSlug]);
+    }, [lastSegment]);
 
     // console.log(movieData);
 
@@ -47,8 +55,8 @@ function DescriptionFilm() {
                             <span className={cx('text-white font-[500] text-[13px]')}>Thể loại: </span>
                             <span className={cx('text-[13px] text-[#828282] hover:text-[#ff6901]')}>
                                 {movieData.category &&
-                                    movieData.category.map((cate) => {
-                                        return <span id={cate.id}>{cate.name}, </span>;
+                                    movieData.category.map((cate,index) => {
+                                        return <span key={index} id={cate.id}>{cate.name}, </span>;
                                     })}
                             </span>
                         </div>

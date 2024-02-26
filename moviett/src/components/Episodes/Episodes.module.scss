@@ -9,6 +9,7 @@
     flex-wrap: wrap;
     gap: 10px;
     cursor: pointer;
+    margin-top: -50px;
 }
 .titile {
     font-size: 14px;
@@ -25,7 +26,9 @@
     max-height: 30px;
     border-radius: 3px;
     padding: 5px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &:hover {
         background-color: #ff9601;
     }

@@ -1,10 +1,11 @@
 import Header from '../../components/Header/Header';
 import ListMovie from '../../components/ListMovie/ListMovie';
-function Home() {
+
+function Home(props) {
     return (
         <>
             <Header />
-            <ListMovie />
+            <ListMovie value={props} />
         </>
     );
 }

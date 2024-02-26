@@ -1,10 +1,11 @@
 import FormFilm from '../../components/FormFilm/FormFilm';
 import Header from '../../components/Header/Header';
-function Movie() {
+
+function Movie(props) {
     return (
         <>
             <Header></Header>
-            <FormFilm />
+            <FormFilm value={props} />
         </>
     );
 }
