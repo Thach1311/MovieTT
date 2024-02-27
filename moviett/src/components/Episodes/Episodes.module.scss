@@ -33,3 +33,11 @@
         background-color: #ff9601;
     }
 }
+
+@media screen and (max-width: 450px) {
+    .form {
+        width: 400px;
+        height: 100px;
+        margin-top: 300px;
+    }
+}

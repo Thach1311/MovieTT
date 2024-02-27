@@ -43,7 +43,7 @@
     .descriptionFilm {
         color: #fff;
         position: absolute;
-        
+
         top: 60%;
         left: 10%;
         & button {
@@ -71,5 +71,13 @@
     100% {
         opacity: 1;
         scale: 1.2;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .Banner_form {
+        width: 400px;
+        height: 200px;
+
     }
 }

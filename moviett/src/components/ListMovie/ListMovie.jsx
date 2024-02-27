@@ -82,7 +82,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(1)}
-                        style={indexPage == 1 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 1 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         1
                     </div>
@@ -91,7 +91,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(2)}
-                        style={indexPage == 2 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 2 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         2
                     </div>
@@ -100,7 +100,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(3)}
-                        style={indexPage == 3 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 3 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         3
                     </div>
@@ -109,7 +109,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(4)}
-                        style={indexPage == 4 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 4 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         4
                     </div>
@@ -118,7 +118,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(5)}
-                        style={indexPage == 5 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 5 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         5
                     </div>
@@ -127,7 +127,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(6)}
-                        style={indexPage == 6 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 6 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         6
                     </div>
@@ -136,7 +136,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(7)}
-                        style={indexPage == 7 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 7 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         7
                     </div>
@@ -145,7 +145,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(8)}
-                        style={indexPage == 8 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 8 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         8
                     </div>
@@ -154,7 +154,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(9)}
-                        style={indexPage == 9 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 9 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         9
                     </div>
@@ -163,7 +163,7 @@ function ListMovie(props) {
                             'text-white h-[30px] w-[40px] bg-[#ef8202] cursor-pointer rounded-[4px] hover:bg-[#ee4b4b]',
                         )}
                         onClick={() => setIndexPage(10)}
-                        style={indexPage == 10 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
+                        style={indexPage === 10 ? { backgroundColor: '#ee4b4b' } : { backgroundColor: '#ef9002ec' }}
                     >
                         10
                     </div>
